@@ -36,7 +36,6 @@ public class RoomServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		// Retrieve all rooms from the database
         List<Room> rooms = roomDao.getAllRooms();
         
