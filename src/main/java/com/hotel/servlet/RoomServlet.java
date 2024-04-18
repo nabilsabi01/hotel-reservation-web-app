@@ -21,32 +21,41 @@ public class RoomServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RoomDao roomDao;
 
-    public void init() {
-        roomDao = new RoomDaoImpl(); // Initialize RoomDao implementation
-    }
-
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RoomServlet() {
-        super();
-    }
+	public void init() {
+		roomDao = new RoomDaoImpl(); // Initialize RoomDao implementation
+	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public RoomServlet() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// Retrieve all rooms from the database
-        List<Room> rooms = roomDao.getAllRooms();
-        
-        request.setAttribute("rooms", rooms);
-        
-        request.getRequestDispatcher("add-room.jsp").forward(request, response);	}
+		List<Room> rooms = roomDao.getAllRooms();
+//
+//		request.setAttribute("rooms", rooms);
+//
+//		request.getRequestDispatcher("add-room.jsp").forward(request, response);
+		request.setAttribute("rooms", rooms);
+
+        // Forward the request to the JSP
+        request.getRequestDispatcher("/room-card.jsp").forward(request, response);
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
