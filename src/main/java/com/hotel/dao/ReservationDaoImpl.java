@@ -21,7 +21,6 @@ public class ReservationDaoImpl implements ReservationDao {
 				PreparedStatement statement = connection.prepareStatement(sql);
 				ResultSet resultSet = statement.executeQuery()) {
 			while (resultSet.next()) {
-				int reservationId = resultSet.getInt("reservation_id");
 				int roomId = resultSet.getInt("room_id");
 				Date startDate = resultSet.getDate("start_date");
 				Date endDate = resultSet.getDate("end_date");
@@ -30,7 +29,7 @@ public class ReservationDaoImpl implements ReservationDao {
 				String phoneNumber = resultSet.getString("phone_number");
 				double totalPrice = resultSet.getDouble("total_price");
 				boolean reservationStatus = resultSet.getBoolean("reservation_status");
-				Reservation reservation = new Reservation(reservationId, roomId, startDate, endDate, guestName, email,
+				Reservation reservation = new Reservation(roomId, startDate, endDate, guestName, email,
 						phoneNumber, totalPrice, reservationStatus);
 				reservations.add(reservation);
 			}
@@ -42,7 +41,6 @@ public class ReservationDaoImpl implements ReservationDao {
 
 	@Override
 	public List<Reservation> searchReservations(String guestName, String email, String phoneNumber) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

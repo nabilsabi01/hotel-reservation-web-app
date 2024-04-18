@@ -22,7 +22,7 @@ public class RoomServlet extends HttpServlet {
 	private RoomDao roomDao;
 
 	public void init() {
-		roomDao = new RoomDaoImpl(); // Initialize RoomDao implementation
+		roomDao = new RoomDaoImpl();
 	}
 
 	/**
@@ -38,16 +38,9 @@ public class RoomServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Retrieve all rooms from the database
 		List<Room> rooms = roomDao.getAllRooms();
-//
-//		request.setAttribute("rooms", rooms);
-//
-//		request.getRequestDispatcher("add-room.jsp").forward(request, response);
 		request.setAttribute("rooms", rooms);
-
-        // Forward the request to the JSP
-        request.getRequestDispatcher("/room-card.jsp").forward(request, response);
+        request.getRequestDispatcher("/list-room.jsp").forward(request, response);
 	}
 
 	/**
@@ -56,7 +49,6 @@ public class RoomServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -3,7 +3,6 @@ package com.hotel.bean;
 import java.sql.Date;
 
 public class Reservation {
-	private int reservationId;
     private int roomId;
     private Date startDate;
     private Date endDate;
@@ -17,10 +16,9 @@ public class Reservation {
 		super();
 	}
 
-	public Reservation(int reservationId, int roomId, Date startDate, Date endDate, String guestName, String email,
+	public Reservation(int roomId, Date startDate, Date endDate, String guestName, String email,
 			String phoneNumber, double totalPrice, boolean reservationStatus) {
 		super();
-		this.reservationId = reservationId;
 		this.roomId = roomId;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -29,14 +27,6 @@ public class Reservation {
 		this.phoneNumber = phoneNumber;
 		this.totalPrice = totalPrice;
 		this.reservationStatus = reservationStatus;
-	}
-
-	public int getReservationId() {
-		return reservationId;
-	}
-
-	public void setReservationId(int reservationId) {
-		this.reservationId = reservationId;
 	}
 
 	public int getRoomId() {

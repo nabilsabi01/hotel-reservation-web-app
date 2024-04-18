@@ -60,4 +60,19 @@ public class RoomDaoImpl implements RoomDao {
 		return rooms;
 	}
 
+	 @Override
+	    public boolean updateRoomAvailability(int roomId, boolean isAvailable) {
+	        String sql = "UPDATE rooms SET is_available = ? WHERE room_id = ?";
+	        try (Connection connection = DBUtil.getConnection();
+	             PreparedStatement statement = connection.prepareStatement(sql)) {
+	            statement.setBoolean(1, isAvailable);
+	            statement.setInt(2, roomId);
+	            int rowsUpdated = statement.executeUpdate();
+	            return rowsUpdated > 0;
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return false;
+	        }
+	    }
+
 }
